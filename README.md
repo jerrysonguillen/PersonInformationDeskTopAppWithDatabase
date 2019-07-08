@@ -2,7 +2,7 @@
 
 This project is Person Information made in java swing desktop application with database
 
-//the purpose of the project is to implement the some component in swing and use MVC structure model and save the collected data in database
+//the purpose of the project is to implement some component in swing and use MVC structure pattern and save the collected data in database
 
 how to use
 -clone this repository 
