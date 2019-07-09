@@ -10,7 +10,7 @@ how to use
 -import persondb.sql in your database located inside the folder
 -open the App.java then run
 
-*********************function**************************
+------------------function-------------------
 Add Person panel (left side) 
 
 note:
