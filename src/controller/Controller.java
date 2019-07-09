@@ -38,7 +38,7 @@ public class Controller {
 		db.disConnect();
 	}
 	
-	public void removePerson(int index) {
+	public void removePerson(int index) throws SQLException {
 		db.removePerson(index);
 	}
 	
@@ -78,7 +78,7 @@ public class Controller {
 			break;
 		}
 		
-		int id = db.numberOfPerson();
+		int id = db.numberOfPerson() + 1;
 		Person person = new Person(id,name, occupation, ageCategory, empCat, taxId, isUs, genderCat);
 		
 		db.addPerson(person);

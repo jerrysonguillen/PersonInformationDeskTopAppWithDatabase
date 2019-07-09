@@ -137,8 +137,32 @@ public class Database {
 		selectStatement.close();
 	}
 
-	public void removePerson(int index) {
+	public void removePerson(int index) throws SQLException {
+		
 		people.remove(index);
+		
+		String searchSql = "Select count(*) as count from people where id = ?";
+		PreparedStatement searchStatement = con.prepareStatement(searchSql);
+		searchStatement.setInt(1, index);
+		ResultSet searchResult = searchStatement.executeQuery();
+		
+		
+		String deleteSql = "delete from people where id =?";
+		PreparedStatement deleteStatement = con.prepareStatement(deleteSql);
+		
+		
+		searchResult.next();
+		int count = searchResult.getInt(1);
+		if (count == 1) {
+			deleteStatement.setInt(1, index);
+			deleteStatement.executeUpdate();
+		}
+			
+			
+		
+		searchStatement.close();
+		searchResult.close();
+		deleteStatement.close();
 	}
 
 	public List<Person> getPeople() {

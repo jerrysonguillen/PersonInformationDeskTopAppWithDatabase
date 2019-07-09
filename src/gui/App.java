@@ -397,7 +397,12 @@ public class App {
 		
 		tablePanel.setPersonTableListener(new PersonTableListener() {
 			public void rowDeleted(int row) {
-				controller.removePerson(row);
+				try {
+					controller.removePerson(row);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		
