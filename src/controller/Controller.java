@@ -43,8 +43,6 @@ public class Controller {
 	}
 	
 	public void removePerson(int index) throws SQLException {
-		//int id = (int) tableModel.getValueAt(index, 0);
-		//System.out.println(id);
 		db.removePerson(index);
 	}
 	

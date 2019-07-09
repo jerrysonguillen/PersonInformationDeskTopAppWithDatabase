@@ -179,7 +179,7 @@ public class App {
 					controller.retrieve();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(frmPersonInformation, "Unable to retrieve data in database", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 				tablePanel.refresh();
 			}

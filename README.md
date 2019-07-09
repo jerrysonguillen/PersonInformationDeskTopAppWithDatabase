@@ -2,12 +2,12 @@
 
 This project is Person Information made in java swing desktop application with database
 
-//the purpose of the project is to show my implementation of some component in swing and use MVC structure pattern and save the collected data in database
+//the purpose of the project is to show my implementation of some component in swing and use MVC structure  and save the collected data in database
 
 how to use
 -clone this repository 
--open your xampp start the apache and mysql (xampp)
--import persondb in your database located inside the folder
+-open your xampp start the apache and mysql (xampp for xampp instruction.)
+-import persondb.sql in your database located inside the folder
 -open the App.java then run
 
 *********************function**************************
@@ -15,7 +15,7 @@ Add Person panel (left side)
 
 note:
 always refresh and make sure you save the collection of data
-all data in the table once it save the data in the database will updated/insert
+all data in the table once it's save the database will update
 
 fill up the fields in add person panel and click ok button and save it in table(right side)
 it will save in the table with incremented id number

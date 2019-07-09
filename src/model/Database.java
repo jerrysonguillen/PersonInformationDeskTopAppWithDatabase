@@ -167,8 +167,14 @@ public class Database {
 			if (deleteConfirm == JOptionPane.OK_OPTION) {
 				deleteStatement.setInt(1, id);
 				deleteStatement.executeUpdate();
+			} else if (deleteConfirm == JOptionPane.CANCEL_OPTION) {
+				searchStatement.close();
+				searchResult.close();
+				deleteStatement.close();
+				return;
 			}
 		}
+		
 		people.remove(index);
 		searchStatement.close();
 		searchResult.close();
