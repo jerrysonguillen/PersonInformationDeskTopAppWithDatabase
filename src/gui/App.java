@@ -397,7 +397,7 @@ public class App {
 		
 		tablePanel.setPersonTableListener(new PersonTableListener() {
 			public void rowDeleted(int row) {
-				try {
+			try {
 					controller.removePerson(row);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -432,6 +432,7 @@ public class App {
 		});
 		JMenuItem importItem = new JMenuItem("Import Data...");
 		importItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
+		exportItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		importItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (fileChooser.showOpenDialog(new JButton()) == JFileChooser.APPROVE_OPTION) {

@@ -3,8 +3,11 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import gui.PersonTableModel;
 import model.AgeCategory;
 import model.Database;
 import model.EmploymentCategory;
@@ -13,6 +16,7 @@ import model.Person;
 
 public class Controller {
 	Database db = new Database();
+	private PersonTableModel tableModel;
 	
 	public void setDb(Database db) {
 		this.db = db;
@@ -39,6 +43,8 @@ public class Controller {
 	}
 	
 	public void removePerson(int index) throws SQLException {
+		//int id = (int) tableModel.getValueAt(index, 0);
+		//System.out.println(id);
 		db.removePerson(index);
 	}
 	
@@ -78,9 +84,20 @@ public class Controller {
 			break;
 		}
 		
-		int id = db.numberOfPerson() + 1;
+		ArrayList<Integer> personId = new ArrayList<Integer>();
+		for (Person person: db.getPeople()) {
+			personId.add(person.getId());
+		}
+		int id = 1;
+		Collections.sort(personId);
+		if (db.numberOfPerson()>0) {
+			id =personId.get(db.numberOfPerson()-1);
+			if (personId.get(db.numberOfPerson()-1) == id) {
+				id++;
+			}
+		}
+		System.out.println(id);
 		Person person = new Person(id,name, occupation, ageCategory, empCat, taxId, isUs, genderCat);
-		
 		db.addPerson(person);
 	}
 	

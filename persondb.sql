@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2019 at 09:12 AM
+-- Generation Time: Jul 09, 2019 at 07:57 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -38,20 +38,6 @@ CREATE TABLE `people` (
   `gender` enum('male','female','','') NOT NULL,
   `occupation` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `people`
---
-
-INSERT INTO `people` (`id`, `name`, `age`, `employment_status`, `tax_id`, `ph_citizen`, `gender`, `occupation`) VALUES
-(1, 'andress', 'adult', 'employed', '132', 1, 'male', 'manager'),
-(2, 'jerryson', 'adult', 'employed', '1131', 1, 'male', 'Software Engineer'),
-(3, 'marilyn', 'adult', 'employed', '9632', 1, 'female', 'Actress'),
-(4, 'ben', 'adult', 'employed', '9632', 1, 'male', 'Singer'),
-(5, 'spens', 'adult', 'employed', '9632', 1, 'female', 'Actress'),
-(6, 'angela', 'adult', 'employed', '9632', 1, 'female', 'engineer'),
-(7, 'sample7', 'adult', 'employed', '1321', 1, 'male', 'Chef'),
-(13, 'arriane', 'adult', 'selfEmployed', '1653', 0, 'female', 'Sinnger');
 
 --
 -- Indexes for dumped tables
