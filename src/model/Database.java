@@ -36,7 +36,7 @@ public class Database {
 		people.add(person);
 	}
 
-	public int numberOfPerson() {
+	public int getPeopleSize() {
 		return people.size();
 	}
 

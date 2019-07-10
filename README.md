@@ -8,7 +8,7 @@ how to use
 -clone this repository 
 -open your xampp start the apache and mysql (xampp for xampp instruction.)
 -import persondb.sql in your database located inside the folder
--open the App.java then run
+-open the App.java then run (PersonInformationDeskTopAppWithDatabase<src<gui<App)
 
 *********************function**************************
 Add Person panel (left side) 

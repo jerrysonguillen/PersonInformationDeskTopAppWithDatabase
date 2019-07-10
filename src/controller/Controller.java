@@ -88,9 +88,9 @@ public class Controller {
 		}
 		int id = 1;
 		Collections.sort(personId);
-		if (db.numberOfPerson()>0) {
-			id =personId.get(db.numberOfPerson()-1);
-			if (personId.get(db.numberOfPerson()-1) == id) {
+		if (db.getPeopleSize()>0) {
+			id =personId.get(db.getPeopleSize()-1);
+			if (personId.get(db.getPeopleSize()-1) == id) {
 				id++;
 			}
 		}
