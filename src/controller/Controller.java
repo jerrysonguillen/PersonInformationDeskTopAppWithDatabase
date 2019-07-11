@@ -94,7 +94,7 @@ public class Controller {
 				id++;
 			}
 		}
-		System.out.println(id);
+		
 		Person person = new Person(id,name, occupation, ageCategory, empCat, taxId, isUs, genderCat);
 		db.addPerson(person);
 	}
