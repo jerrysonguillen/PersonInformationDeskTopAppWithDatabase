@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import gui.PersonTableModel;
 import model.AgeCategory;
 import model.Database;
 import model.EmploymentCategory;
@@ -16,8 +15,6 @@ import model.Person;
 
 public class Controller {
 	Database db = new Database();
-	private PersonTableModel tableModel;
-	
 	public void setDb(Database db) {
 		this.db = db;
 	}

@@ -1,14 +1,12 @@
 package gui;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import model.AgeCategory;
-import model.EmploymentCategory;
 import model.Person;
 
 public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 	
+	private static final long serialVersionUID = -3960447426426904371L;
 	private List<Person> db;
 	private String[] colNames = {"ID", "Name", "Occupation","Gender", "Age Category", "Employment Category", "PH Citizen", "Tax ID"};
 	public PersonTableModel() {

@@ -1,17 +1,17 @@
 #Person information java application
 
-This project is Person Information made in java swing desktop application with database
+This project is Person Information desktop application made in java-SE with database(MySQL)
 
-//the purpose of the project is to show my implementation of some component in swing and use MVC structure  and save the collected data in database
+//the purpose of the project is to show my implementation of some component in swing and the use of MVC design pattern and save the collected data in database
 
 how to use
 -clone this repository 
 
--open your xampp start the apache and mysql (xampp for xampp instruction.)
+-open your xampp start the apache and mysql (for xampp instruction.)
 
 -import persondb.sql in your database located inside the folder
 
--open the App.java then run (PersonInformationDeskTopAppWithDatabase<src<gui<App)
+-open the App.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>App)
 
 ---------------------------------------------------*function*---------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ Refresh button(beside Save button)
  -will get the data in database and put it in table(right side)
 
 delete row
- -right click the row that you want to delete then click the pupup menu(delete row) if you click ok the data in the data base will be deleted
+ -right click the row that you want to delete then click the pupup menu(delete row) if you click ok the data in the data base will be deleted permanately
 
 Edit row
  -you can edit the row that are editable, not all column is editable, select column and row that you want to edit by double click that row and column then save it to make changes

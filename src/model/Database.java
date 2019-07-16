@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.Statement;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -19,8 +19,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
-import java.sql.Statement;
 
 //import com.mysql.cj.xdevapi.Statement;
 

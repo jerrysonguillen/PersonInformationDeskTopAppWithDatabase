@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JMenuItem;
@@ -17,6 +16,10 @@ import model.Person;
 
 public class TablePanel extends javax.swing.JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3960447426426904371L;
 	private JTable table;
 	private PersonTableModel tableModel;
 	private JPopupMenu popup;

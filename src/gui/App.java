@@ -69,9 +69,6 @@ public class App {
 	private JDialog prefDialog;
 	private JSplitPane splitPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -85,16 +82,10 @@ public class App {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public App() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmPersonInformation = new JFrame();
 		frmPersonInformation.setTitle("Person Information");
@@ -165,11 +156,6 @@ public class App {
 				}
 			}
 		});
-		btnSave.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				//txtArea.append("Hello\n");
-			}
-		});
 		toolBar.add(btnSave);
 		JButton btnRefresh = new JButton("Refresh");
 		btnRefresh.addActionListener(new ActionListener() {
@@ -178,7 +164,6 @@ public class App {
 				try {
 					controller.retrieve();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(frmPersonInformation, "Unable to retrieve data in database", "Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 				tablePanel.refresh();
@@ -250,7 +235,6 @@ public class App {
 		list.setPreferredSize(new Dimension(110, 66));
 		list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		list.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		// list.setBounds(new Rectangle(10, 10, 0, 0));
 		list.setAlignmentY(Component.TOP_ALIGNMENT);
 		list.setAlignmentX(Component.LEFT_ALIGNMENT);
 		list.setModel(new AbstractListModel<Object>() {
@@ -400,7 +384,6 @@ public class App {
 			try {
 					controller.removePerson(row);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -485,8 +468,6 @@ public class App {
 		JPasswordField txtPassword = new JPasswordField(10);
 		prefDialog.getContentPane().setLayout(new GridBagLayout());
 		txtPassword.setEchoChar('*');
-		
-		
 		
 		int y = 0;
 		//////first row/////////////////
@@ -573,7 +554,6 @@ public class App {
 		JMenu showItem = new JMenu("Show");
 		JCheckBoxMenuItem showItemForm = new JCheckBoxMenuItem("PersonForm");
 		JMenuItem prefsItem = new JMenuItem("Preferences");
-		//prefs.setSize(400, 300);
 		showItemForm.setSelected(true);
 		showItem.add(showItemForm);
 		windowMenu.add(showItem);
