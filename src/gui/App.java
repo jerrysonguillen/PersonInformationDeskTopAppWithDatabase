@@ -370,7 +370,7 @@ public class App {
 				String taxId = txtTaxId.getText();
 				controller.addPerson(name, occupation, age, employment, gender, isPH, taxId);
 				tablePanel.refresh();
-				System.out.println(name + " " + occupation + " :" + age + ", " + employment + " gener: " + gender + "\n");
+				//System.out.println(name + " " + occupation + " :" + age + ", " + employment + " gener: " + gender + "\n");
 				
 			}
 		});

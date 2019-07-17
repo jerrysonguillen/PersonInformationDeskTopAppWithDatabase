@@ -49,8 +49,7 @@ public class Database {
 		}
 		String url = "jdbc:mysql://localhost/persondb";
 		con = DriverManager.getConnection(url, "root", "");
-
-		System.out.println("connected to database :" + con);
+		//System.out.println("connected to database :" + con);
 	}
 
 	public void disConnect() {
@@ -100,7 +99,7 @@ public class Database {
 				insertStatement.setString(col++, gender.name());
 				insertStatement.setString(col++, occupation);
 				insertStatement.executeUpdate();
-				System.out.println("Inserting the person with id: " + id);
+				//System.out.println("Inserting the person with id: " + id);
 			} else {
 				updateStatement.setString(col++, name);
 				updateStatement.setString(col++, age.name());
@@ -111,7 +110,7 @@ public class Database {
 				updateStatement.setString(col++, occupation);
 				updateStatement.setInt(col++, id);
 				updateStatement.executeUpdate();
-				System.out.println("Updating the person name: " + name + " with id: " + id);
+				//System.out.println("Updating the person name: " + name + " with id: " + id);
 			}
 
 		}
