@@ -12,10 +12,14 @@ how to use
 
 -import persondb.sql in your database located inside the folder
 
+<<<<<<< HEAD
 -open the App.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>App)
 
 ---------------------------------------------------*function*---------------------------------------------------------------------
 
+=======
+------------------function-------------------
+>>>>>>> 269187e7ba5f307c952923af008a043eca1530ae
 Add Person panel (left side) 
 
 note:
