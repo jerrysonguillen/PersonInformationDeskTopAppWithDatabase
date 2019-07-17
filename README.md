@@ -12,7 +12,6 @@ how to use
 
 -import persondb.sql in your database located inside the folder
 
-<<<<<<< HEAD
 -open the App.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>App)
 
 ---------------------------------------------------*function*---------------------------------------------------------------------
