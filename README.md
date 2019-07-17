@@ -17,9 +17,6 @@ how to use
 
 ---------------------------------------------------*function*---------------------------------------------------------------------
 
-=======
-------------------function-------------------
->>>>>>> 269187e7ba5f307c952923af008a043eca1530ae
 Add Person panel (left side) 
 
 note:
@@ -43,7 +40,7 @@ delete row
 
 Edit row
  
- -you can edit the row that are editable, not all column is editable, select column and row that you want to edit by double click that row and column then save it to make changes
+ -you can edit the row that are editable, Name,Occupation,and Tax ID is editable, select column and row that you want to edit by double click that row and column then save it to make changes
 
 JSplitter
  
