@@ -125,6 +125,7 @@ public class Database {
 		String retrieveSql = "SELECT * FROM people";
 		Statement selectStatement = con.createStatement();
 		ResultSet results = selectStatement.executeQuery(retrieveSql);
+		
 		while (results.next()) {
 			int id = results.getInt("id");
 			String name = results.getString("name");
@@ -137,6 +138,7 @@ public class Database {
 			people.add(new Person(id, name, occu, AgeCategory.valueOf(age), EmploymentCategory.valueOf(emp), taxid,
 					phCitizen, Gender.valueOf(gender)));
 		}
+		
 		results.close();
 		selectStatement.close();
 	}
