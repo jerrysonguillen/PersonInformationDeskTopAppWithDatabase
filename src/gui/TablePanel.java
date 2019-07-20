@@ -16,9 +16,6 @@ import model.Person;
 
 public class TablePanel extends javax.swing.JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3960447426426904371L;
 	private JTable table;
 	private PersonTableModel tableModel;
@@ -55,8 +52,6 @@ public class TablePanel extends javax.swing.JPanel {
 		});
 	}
 	
-	
-	
 	public void setData(List<Person> db) {
 		tableModel.setData(db);
 	}
@@ -64,9 +59,6 @@ public class TablePanel extends javax.swing.JPanel {
 	public void refresh() {
 		tableModel.fireTableDataChanged();
 	}
-	
-	
-
 
 	public void setPersonTableListener(PersonTableListener Listener) {
 		this.personTableListener = Listener;

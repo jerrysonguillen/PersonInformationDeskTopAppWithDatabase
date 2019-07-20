@@ -12,19 +12,13 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 	public PersonTableModel() {
 	}
 	
-	
-	
 	public List<Person> getDb() {
 		return db;
 	}
 
-
-
 	public void setDb(List<Person> db) {
 		this.db = db;
 	}
-
-
 
 	@Override
 	public boolean isCellEditable(int row, int col) {
@@ -40,19 +34,14 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 		}
 	}
 
-
-
 	@Override
 	public String getColumnName(int column) {
 		return colNames[column];
 	}
 
-
-
 	public void setData(List<Person> db) {
 		this.db = db;
 	}
-	
 
 	public int getColumnCount() {
 		return 8;
@@ -88,8 +77,6 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 		return null;
 	}
 
-
-
 	@Override
 	public void setValueAt(Object value, int row, int col) {
 		Person person = db.get(row);
@@ -108,7 +95,4 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 		}
 	
 	}
-	
-	
-
 }
