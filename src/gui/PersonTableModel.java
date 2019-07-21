@@ -8,7 +8,7 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 	
 	private static final long serialVersionUID = -3960447426426904371L;
 	private List<Person> db;
-	private String[] colNames = {"ID", "Name", "Occupation","Gender", "Age Category", "Employment Category", "PH Citizen", "Tax ID"};
+	private String[] colNames = {"ID", "Name", "CP Number","Occupation","Gender", "Age Category", "Employment Category", "PH Citizen", "Tax ID","note"};
 	public PersonTableModel() {
 	}
 	
@@ -27,7 +27,11 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 			return true;
 		case 2:
 			return true;
-		case 7:
+		case 3:
+			return true;
+		case 8:
+			return true;
+		case 9:
 			return true;
 		default:
 			return false;
@@ -44,7 +48,7 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 	}
 
 	public int getColumnCount() {
-		return 8;
+		return 10;
 	}
 
 	@Override
@@ -62,17 +66,21 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 		case 1:
 			return person.getName();
 		case 2:
-			return person.getOccupation();
+			return person.getContactNumber();
 		case 3:
-			return person.getGender();
+			return person.getOccupation();
 		case 4:
-			return person.getAgeCategory();
+			return person.getGender();
 		case 5:
-			return person.getEmpCat();
+			return person.getAgeCategory();
 		case 6:
-			return person.isUsCitizen();
+			return person.getEmpCat();
 		case 7:
+			return person.isUsCitizen();
+		case 8:
 			return person.getTaxId();
+		case 9:
+			return person.getNote();
 		}
 		return null;
 	}
@@ -85,11 +93,16 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 			person.setName((String) value);
 			break;
 		case 2:
-			person.setOccupation((String) value);;
+			person.setContactNumber((String) value);
 			break;
-		case 7:
+		case 3:
+			person.setOccupation((String) value);
+			break;
+		case 8:
 			person.setTaxId((String) value);
 			break;
+		case 9:
+			person.setNote((String) value);
 		default:
 			break;
 		}

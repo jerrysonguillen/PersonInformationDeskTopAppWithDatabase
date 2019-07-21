@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+
+import gui.App;
+import gui.LogInForm;
 import model.AgeCategory;
 import model.Database;
 import model.EmploymentCategory;
@@ -27,6 +32,10 @@ public class Controller {
 		db.save();
 	}
 	
+	public void update() throws SQLException {
+		db.update();
+	}
+	
 	public void connect() throws Exception{
 		db.connect();
 	}
@@ -43,7 +52,7 @@ public class Controller {
 		db.removePerson(index);
 	}
 	
-	public void addPerson(String name,String occupation,int age,String employment,String gender,boolean isUs,String taxId) {
+	public void addPerson(String name,String contactNumber,String occupation,int age,String employment,String gender,boolean isUs,String taxId,String note) {
 		AgeCategory ageCategory = null;
 		switch (age) {
 		case 0:
@@ -83,16 +92,23 @@ public class Controller {
 		for (Person person: db.getPeople()) {
 			personId.add(person.getId());
 		}
-		int id = 1;
+		int id=1;
+		try {
+			id = db.getMaxId();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		Collections.sort(personId);
 		if (db.getPeopleSize()>0) {
-			id =personId.get(db.getPeopleSize()-1);
-			if (personId.get(db.getPeopleSize()-1) == id) {
+			if (personId.get(db.getPeopleSize()-1) <= id) {
 				id++;
+			} else {
+				id = personId.get(db.getPeopleSize()-1)+1;
 			}
+		}else {
+			id++;
 		}
-		
-		Person person = new Person(id,name, occupation, ageCategory, empCat, taxId, isUs, genderCat);
+		Person person = new Person(id,name,contactNumber, occupation, ageCategory, empCat, taxId, isUs, genderCat,db.getUser().getId(),note);
 		db.addPerson(person);
 	}
 	
@@ -103,5 +119,45 @@ public class Controller {
 	public void loadFromFile(File file) throws IOException {
 		db.loadFromFile(file);
 	}
+
+	public boolean register(String firstname, String lastname, String email, String username, String password,
+			String cPassword) {
+		boolean registerResult = false;
+		System.out.println("this is controller");
+		if (firstname.length() == 0 || lastname.length() == 0 || email.length() == 0 || username.length() == 0 ||password.length() == 0) {
+			JOptionPane.showMessageDialog(new JButton(), "please fill up all fields", "Error Message", JOptionPane.ERROR_MESSAGE);
+		}else {
+			if (!(username.length() <= 30 && username.length() >=8)) {
+				JOptionPane.showMessageDialog(new JButton(), "Your username must be 8 to 30 characters", "Error Message", JOptionPane.ERROR_MESSAGE);
+			} else {
+				if (!(password.length() <=30 && password.length() >= 8)) {
+					JOptionPane.showMessageDialog(new JButton(), "Your password must be 8 to 30 chracters", "Error Message", JOptionPane.ERROR_MESSAGE);
+				}else {
+					if (!password.equals(cPassword)) {
+						JOptionPane.showMessageDialog(new JButton(), "password didnt match", "Error Message", JOptionPane.ERROR_MESSAGE);
+					} else {
+						try {
+							registerResult = db.register(firstname,lastname,email,username,password);
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+		return registerResult;
+	}
+
+	public boolean logIn(String username, String password) throws SQLException {
+		boolean result = false;
+		if (username.length() == 0 || password.length() == 0) {
+			JOptionPane.showMessageDialog(new JButton(), "please fill up all fields", "Error Message", JOptionPane.ERROR_MESSAGE);
+		} else {
+			result = db.logIn(username,password);
+		}
+		return result;
+	}
+
+	
 	
 }
