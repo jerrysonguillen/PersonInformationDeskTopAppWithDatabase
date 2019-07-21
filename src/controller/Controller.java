@@ -10,8 +10,6 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import gui.App;
-import gui.LogInForm;
 import model.AgeCategory;
 import model.Database;
 import model.EmploymentCategory;

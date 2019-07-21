@@ -1,26 +1,40 @@
 #Person information java application
 
-This project is Person Information desktop application made in java-SE with database(MySQL)
+This project is Person Information desktop application made in java-SE in eclipse IDE with database(MySQL)
 
-//the purpose of the project is to show my implementation of some component in swing and the use of MVC design pattern then save the collected data in database and the use of serialization to save the collected data in your machine and back in again in the program
+//the purpose of the project is to show my implementation of some component in swing using MVC design pattern then save the collected data in database and the use of serialization to save the collected data in your machine by exporting it and back to the program by importing the file
+
+//this is my first portfolio 
 
 how to use
 
 -clone this repository 
 
--open your xampp start the apache and mysql (for xampp instruction.)
+-open your xampp start the apache and mysql (for xampp instruction.) 
 
--import persondb.sql in your database located inside the folder
+-import persondb.sql in your database located inside the folder, for not xampp user import the persondb.sql to your database manager
 
--open the App.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>App)
+-open the LogInForm.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>LogInForm.java)
 
----------------------------------------------------*function*---------------------------------------------------------------------
+-create a user account by going to registerform 
 
-Add Person panel (left side) 
+-then log-in
+
+-you can now have a own set of person information
+
+
+---------------------------------------------------*functionality*---------------------------------------------------------------------
 
 note:
-always refresh and make sure you save the collection of data
-all data in the table once it's save the database will update
+
+-user can have own set of person information
+
+-every user must have a unique email address
+
+-can insert/view/update/delete row
+
+
+Add Person panel (left side) 
 
 fill up the fields in add person panel and click ok button and save it in table(right side)
 it will save in the table with incremented id number
@@ -29,21 +43,27 @@ Save button(upper left side)
  
  -will save the collected data in the database
 
-Refresh button(beside Save button)
+Update Button(beside Save button)
+
+-will update the data in the database
+
+Refresh button(beside Update button)
  
  -will get the data in database and put it in table(right side)
 
 delete row
  
- -right click the row that you want to delete then click the pupup menu(delete row) if you click ok the data in the data base will be deleted permanently
+ -right click the row that you want to delete then click the pop-up menu(delete row) if you click ok the data in the data base will be deleted permanently
 
 Edit row
  
- -you can edit the row that are editable, Name,Occupation,and Tax ID is editable, select column and row that you want to edit by double click that row and column then save it to make changes
+ -you can edit the column that are editable, Name,CP number,Occupation,Tax ID,and notes are editable, select column and row that you want to edit by double click then save it to make changes
 
 JSplitter
  
  -the Add Person panel and table is added to jsplitter so that you can resize the two column
+ 
+ 
 
 ------------------------------------------------------*MENU*----------------------------------------------------------------------
 
@@ -53,7 +73,7 @@ File
 
 Export data
  
- -save your data in your machine, by now you can save it in any type of file
+ -save your data in your machine, its ok if you dont put a file extension to save your file
 
 Import data
  

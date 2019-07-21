@@ -284,5 +284,4 @@ public class Database {
 		maxIdResult.close();
 		return result;
 	}
-
 }

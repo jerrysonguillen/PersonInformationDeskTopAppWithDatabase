@@ -18,6 +18,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.sql.SQLException;
+
 import javax.swing.AbstractListModel;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -26,7 +27,6 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,24 +36,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
 import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.JTree;
 import javax.swing.KeyStroke;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeSelectionModel;
 
 import controller.Controller;
 
@@ -142,7 +131,6 @@ public class App {
 					e.printStackTrace();
 				}
 			}
-			
 		});
 		
 		toolBar.add(btnUpdate);
@@ -284,11 +272,6 @@ public class App {
 		txtNote.setColumns(10);
 		/////////////////////next row///////////////
 		JButton btnOk = new JButton("OK");
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-
 		JLabel lblEmployment = new JLabel("Employment:");
 		GridBagConstraints gbc_lblEmployment = new GridBagConstraints();
 		gbc_lblEmployment.insets = new Insets(0, 0, 5, 5);
@@ -306,7 +289,7 @@ public class App {
 		gbc_cmbBox.gridx = 2;
 		gbc_cmbBox.gridy = gridY++;
 		pnlForm.add(cmbBox, gbc_cmbBox);
-
+		//////////////////next row///////////////////////////////
 		JLabel lblPHCitizen = new JLabel("PH Citizen:");
 		GridBagConstraints gbc_lblPHCitizen = new GridBagConstraints();
 		gbc_lblPHCitizen.anchor = GridBagConstraints.EAST;
@@ -322,7 +305,7 @@ public class App {
 		gbc_chckbxUsCitizen.gridx = 2;
 		gbc_chckbxUsCitizen.gridy = gridY++;
 		pnlForm.add(chckbxUsCitizen, gbc_chckbxUsCitizen);
-
+		//////////////////////next row//////////////////////
 		JLabel lblTaxId = new JLabel("Tax ID:");
 		lblTaxId.setEnabled(false);
 		GridBagConstraints gbc_lblTaxId = new GridBagConstraints();
@@ -371,7 +354,7 @@ public class App {
 		genderGroup.add(rdbtnMale);
 		genderGroup.add(rdbtnFemale);
 		pnlForm.add(rdbtnFemale, gbc_rdbtnFemale);
-
+		///////////////////next row//////////////////
 		GridBagConstraints gbc_btnOk = new GridBagConstraints();
 		gbc_btnOk.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnOk.insets = new Insets(0, 0, 0, 0);
@@ -473,7 +456,6 @@ public class App {
 		JMenu windowMenu = new JMenu("Window");
 		JMenu showItem = new JMenu("Show");
 		JCheckBoxMenuItem showItemForm = new JCheckBoxMenuItem("PersonForm");
-		JMenuItem prefsItem = new JMenuItem("Preferences");
 		showItemForm.setSelected(true);
 		showItem.add(showItemForm);
 		windowMenu.add(showItem);
@@ -499,7 +481,5 @@ public class App {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(frmPersonInformation, "Unable to connect to database", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
-		
 	}
-	
 }

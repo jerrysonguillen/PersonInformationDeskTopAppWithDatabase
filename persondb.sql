@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2019 at 07:57 AM
+-- Generation Time: Jul 21, 2019 at 04:40 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -36,7 +36,25 @@ CREATE TABLE `people` (
   `tax_id` varchar(11) NOT NULL,
   `ph_citizen` tinyint(1) NOT NULL,
   `gender` enum('male','female','','') NOT NULL,
-  `occupation` varchar(200) NOT NULL
+  `occupation` varchar(200) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
+  `contact_number` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
+  `username` varchar(30) DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -50,6 +68,12 @@ ALTER TABLE `people`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -57,7 +81,13 @@ ALTER TABLE `people`
 -- AUTO_INCREMENT for table `people`
 --
 ALTER TABLE `people`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
