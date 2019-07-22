@@ -1,10 +1,10 @@
-#Person information java application
+Person information java application
 
 This project is Person Information desktop application made in java-SE in eclipse IDE with database(MySQL)
 
-//the purpose of the project is to show my implementation of some component in swing using MVC design pattern then save the collected data in database and the use of serialization to save the collected data in your machine by exporting it and back to the program by importing the file
+//Purpose of the project is to show my implementation of some component in swing, using MVC design pattern then save the collected data in database and the use of serialization to save the collected data in your machine by exporting it and back to the program by importing the file
 
-//this is my first portfolio 
+
 
 how to use
 
@@ -12,7 +12,7 @@ how to use
 
 -open your xampp start the apache and mysql (for xampp instruction.) 
 
--import persondb.sql in your database located inside the folder, for not xampp user import the persondb.sql to your database manager
+-create a database name persondb then import persondb.sql in your database located inside the folder, for not xampp user import the persondb.sql to your database manager
 
 -open the LogInForm.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>LogInForm.java)
 
@@ -37,7 +37,6 @@ note:
 Add Person panel (left side) 
 
 fill up the fields in add person panel and click ok button and save it in table(right side)
-it will save in the table with incremented id number
 
 Save button(upper left side) 
  
