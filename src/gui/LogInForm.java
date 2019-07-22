@@ -21,6 +21,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import controller.Controller;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LogInForm {
 
@@ -111,6 +113,25 @@ public class LogInForm {
 		frmLogin.getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		txtPassword = new JPasswordField();
+		txtPassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String username = txtUsername.getText();
+					String password = new String(txtPassword.getPassword());
+					connect();
+					try {
+						if (controller.logIn(username,password)) {
+							frmLogin.dispose();
+							App.main(null);
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 		txtPassword.setPreferredSize(new Dimension(115, 20));
 		txtPassword.setMinimumSize(new Dimension(30, 20));
 		GridBagConstraints gbc_txtPassword = new GridBagConstraints();

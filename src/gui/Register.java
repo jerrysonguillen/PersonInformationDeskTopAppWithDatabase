@@ -127,7 +127,6 @@ public class Register {
 		frmRegister.getContentPane().add(txtLastname);
 		
 		txtCPassword = new JPasswordField();
-		
 		txtCPassword.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 153, 255)));
 		txtCPassword.setBounds(456, 357, 353, 20);
 		frmRegister.getContentPane().add(txtCPassword);
@@ -204,6 +203,24 @@ public class Register {
 
 		});
 		
+		txtCPassword.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent evt) {
+				if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+					String firstname = txtFirstname.getText();
+					String lastname = txtLastname.getText();
+					String email = txtEmail.getText();
+					String username = txtUsername.getText();
+					String password = new String(txtPassword.getPassword());
+					String cPassword = new String(txtCPassword.getPassword());
+					connect();
+					if(controller.register(firstname,lastname,email,username,password,cPassword)) {
+						frmRegister.dispose();
+						LogInForm.main(null);
+					}
+				}
+			}
+		});
 		
 		btnSubmit.setForeground(Color.WHITE);
 		btnSubmit.setFont(new Font("Tahoma", Font.BOLD, 13));

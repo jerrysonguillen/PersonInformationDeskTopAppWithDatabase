@@ -8,7 +8,7 @@ public class PersonTableModel extends javax.swing.table.AbstractTableModel {
 
 	private static final long serialVersionUID = -3960447426426904371L;
 	private List<Person> db;
-	private String[] colNames = { "Name", "CP Number", "Occupation", "Gender", "Age Category",
+	private String[] colNames = { "Name", "Contact Number", "Occupation", "Gender", "Age Category",
 			"Employment Category", "PH Citizen", "Tax ID", "Notes" };
 
 	public PersonTableModel() {
