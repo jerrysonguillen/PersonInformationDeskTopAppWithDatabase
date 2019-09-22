@@ -2,10 +2,10 @@
 
 //this is my simple program for portfolio purposes
 
------------------------------------------------About--------------------------------------------------------------------
+-----------------------------------------------------About--------------------------------------------------------------------
 This project will have many user with unique email address and every user can have their own set of information/contacts of the person list that they save in database they can also save they person list to they machine and put back again by the use of IO in java
 
------------------------------------------------Technologies-------------------------------------------------------------
+-----------------------------------------------------Technologies-------------------------------------------------------------
 * Java 5 SE
 * Swing framework
 * Eclipse IDE
@@ -13,7 +13,7 @@ This project will have many user with unique email address and every user can ha
 * MVC design pattern
 * GitHub
 
------------------------------------------------How to use--------------------------------------------------------------
+-----------------------------------------------------How to use--------------------------------------------------------------
 
 -clone/pull/download this repository 
 
@@ -30,7 +30,7 @@ This project will have many user with unique email address and every user can ha
 -you can now have a own set of person information
 
 
------------------------------------------------*functionality*---------------------------------------------------------------------
+-----------------------------------------------------*functionality*---------------------------------------------------------------------
 
 -Have a Log-in form
 
@@ -46,7 +46,7 @@ This project will have many user with unique email address and every user can ha
 
 -It has a local server(Mysql database)
 
------------------------------------------------User Interface-----------------------------------------------
+-----------------------------------------------------User Interface-----------------------------------------------
 Add Person panel (left side) 
 
 fill up the fields in add person panel and click ok button and save it in table(right side)
