@@ -1,4 +1,4 @@
-							Title:Person information java application
+					Title:Person information java application
 
 //this is my simple program for portfolio purposes
 
