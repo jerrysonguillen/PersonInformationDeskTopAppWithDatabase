@@ -1,39 +1,23 @@
 package model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.io.*;
+import java.sql.*;
+import java.util.*;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import controller.Controller;
 
-//import com.mysql.cj.xdevapi.Statement;
-
 public class Database {
 	private List<Person> people;
 	private Connection con;
 	private static User user;
-	
+	Controller controller;
+
 	public User getUser() {
 		return user;
 	}
 
-	Controller controller;
 	public Database() {
 		people = new LinkedList<Person>();
 	}
@@ -64,7 +48,7 @@ public class Database {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				System.out.println("can't close connection");
+				JOptionPane.showMessageDialog(new JButton(), "can't close connection","Error Message",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
@@ -83,7 +67,7 @@ public class Database {
 			boolean isPH = person.getUsCitezen();
 			Gender gender = person.getGender();
 			String note = person.getNote();
-			int count = searchInql(id);
+			int count = searchInDb(id);
 			int col = 1;
 			if (count == 0) {
 				insertStatement.setInt(col++, id);
@@ -98,12 +82,13 @@ public class Database {
 				insertStatement.setInt(col++, user.getId());
 				insertStatement.setString(col++, note);
 				insertStatement.executeUpdate();
-			} 
+			}
 		}
-		JOptionPane.showMessageDialog(new JButton(), "Person Successfully Inserted", "SUCCESS MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(new JButton(), "Person Successfully Inserted", "SUCCESS MESSAGE",
+				JOptionPane.INFORMATION_MESSAGE);
 		insertStatement.close();
 	}
-	
+
 	public void update() throws SQLException {
 		String updateSql = "UPDATE people SET name=?,age=?,contact_number=?,employment_status=?,tax_id=?,ph_citizen=?,gender=?,occupation=?,user_id=?,note=? where id=?";
 		PreparedStatement updateStatement = con.prepareStatement(updateSql);
@@ -119,7 +104,7 @@ public class Database {
 			Gender gender = person.getGender();
 			String note = person.getNote();
 			int col = 1;
-			int count = searchInql(id);
+			int count = searchInDb(id);
 			if (count == 1) {
 				updateStatement.setString(col++, name);
 				updateStatement.setString(col++, age.name());
@@ -135,7 +120,8 @@ public class Database {
 				updateStatement.executeUpdate();
 			}
 		}
-		JOptionPane.showMessageDialog(new JButton(), "Information Successfully Updated", "SUCCESS MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(new JButton(), "Information Successfully Updated", "SUCCESS MESSAGE",
+				JOptionPane.INFORMATION_MESSAGE);
 		updateStatement.close();
 	}
 
@@ -143,7 +129,7 @@ public class Database {
 		people.clear();
 		String retrieveSql = "SELECT * FROM people where user_id = ?";
 		PreparedStatement selectStatement = con.prepareStatement(retrieveSql);
-		selectStatement.setInt(1,user.getId());
+		selectStatement.setInt(1, user.getId());
 		ResultSet results = selectStatement.executeQuery();
 		while (results.next()) {
 			int id = results.getInt("id");
@@ -156,8 +142,8 @@ public class Database {
 			String occu = results.getString("occupation");
 			String contactNumber = results.getString("contact_number");
 			String note = results.getString("note");
-			people.add(new Person(id, name, contactNumber,occu, AgeCategory.valueOf(age), EmploymentCategory.valueOf(emp), taxid,
-					phCitizen, Gender.valueOf(gender),user.getId(),note));
+			people.add(new Person(id, name, contactNumber, occu, AgeCategory.valueOf(age),
+					EmploymentCategory.valueOf(emp), taxid, phCitizen, Gender.valueOf(gender), user.getId(), note));
 		}
 		selectStatement.close();
 		results.close();
@@ -166,7 +152,7 @@ public class Database {
 	public void removePerson(int index) throws SQLException {
 		Person person = people.get(index);
 		int id = person.getId();
-		int count = searchInql(id);
+		int count = searchInDb(id);
 		String deleteSql = "delete from people where id =?";
 		PreparedStatement deleteStatement = con.prepareStatement(deleteSql);
 		if (count == 1) {
@@ -184,8 +170,8 @@ public class Database {
 		people.remove(index);
 		deleteStatement.close();
 	}
-	
-	private int searchInql(int id) throws SQLException {
+
+	private int searchInDb(int id) throws SQLException {
 		String searchSql = "Select count(*) as count from people where id = ?";
 		PreparedStatement searchStatement = con.prepareStatement(searchSql);
 		searchStatement.setInt(1, id);
@@ -222,7 +208,8 @@ public class Database {
 		ois.close();
 	}
 
-	public boolean register(String firstname, String lastname, String email, String username, String password) throws SQLException {
+	public boolean register(String firstname, String lastname, String email, String username, String password)
+			throws SQLException {
 		boolean registerResult = false;
 		String searchSql = "select count(*) as count from user where email = ?";
 		PreparedStatement searchStatement = con.prepareStatement(searchSql);
@@ -233,17 +220,19 @@ public class Database {
 		result.next();
 		int resultCount = result.getInt(1);
 		if (resultCount == 1) {
-			JOptionPane.showMessageDialog(new JButton(), "your email is already in user", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JButton(), "your email is already in user", "Error Message",
+					JOptionPane.ERROR_MESSAGE);
 		} else {
 			int col = 1;
-			insertStatement.setString(col++,firstname);
-			insertStatement.setString(col++,lastname);
-			insertStatement.setString(col++,email);
-			insertStatement.setString(col++,username);
-			insertStatement.setString(col++,password);
+			insertStatement.setString(col++, firstname);
+			insertStatement.setString(col++, lastname);
+			insertStatement.setString(col++, email);
+			insertStatement.setString(col++, username);
+			insertStatement.setString(col++, password);
 			insertStatement.executeUpdate();
 			registerResult = true;
-			JOptionPane.showMessageDialog(new JButton(), "Account Successfully created", "SUCCESS Message", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(new JButton(), "Account Successfully created", "SUCCESS Message",
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 		searchStatement.close();
 		result.close();
@@ -263,11 +252,11 @@ public class Database {
 			String firstname = result.getString("first_name");
 			String lastname = result.getString("last_name");
 			String email = result.getString("email");
-			user = new User(id,firstname,lastname,email,username);
-			System.out.println("id: "+user.getId()+" firstname:" + user.getFirstname() + " lastname: "+ user.getLastname()+" email:" + user.getEmail()+" username: " + user.getUsername());
+			user = new User(id, firstname, lastname, email, username);
 			logInResult = true;
 		} else {
-			JOptionPane.showMessageDialog(new JButton(), "It's either username or password is wrong", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JButton(), "It's either username or password is wrong", "Error Message",
+					JOptionPane.ERROR_MESSAGE);
 		}
 		result.close();
 		searchStatement.close();

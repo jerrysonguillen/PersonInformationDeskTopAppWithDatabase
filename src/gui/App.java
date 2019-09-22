@@ -1,49 +1,11 @@
 package gui;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import javax.swing.AbstractListModel;
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
-import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
-
+import javax.swing.*;
+import javax.swing.border.*;
 import controller.Controller;
 
 public class App {
@@ -83,6 +45,7 @@ public class App {
 		frmPersonInformation.setBounds(100, 100, 600, 500);
 		frmPersonInformation.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmPersonInformation.getContentPane().setLayout(new BorderLayout(0, 0));
+		controller = new Controller();
 		frmPersonInformation.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent arg0) {
 				controller.disConnect();
@@ -90,15 +53,15 @@ public class App {
 				System.gc();
 			}
 		});
-		
+
 		JPanel messagePanel = new JPanel();
 		messagePanel.setLayout(new BorderLayout());
-		
+
 		tablePanel = new TablePanel();
 		JPanel pnlForm = new JPanel();
 		pnlForm.setMinimumSize(new Dimension(250, 10));
-		
-		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,pnlForm,tablePanel);
+
+		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pnlForm, tablePanel);
 		splitPane.setOneTouchExpandable(true);
 		frmPersonInformation.getContentPane().add(splitPane, BorderLayout.CENTER);
 
@@ -115,11 +78,12 @@ public class App {
 					controller.save();
 				} catch (SQLException e) {
 					System.out.println(e);
-					JOptionPane.showMessageDialog(frmPersonInformation, "Unable to save in database", "Error Message", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frmPersonInformation, "Unable to save in database", "Error Message",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		
+
 		toolBar.add(btnSave);
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
@@ -132,7 +96,7 @@ public class App {
 				}
 			}
 		});
-		
+
 		toolBar.add(btnUpdate);
 		JButton btnRefresh = new JButton("Refresh");
 		btnRefresh.addActionListener(new ActionListener() {
@@ -142,12 +106,13 @@ public class App {
 					controller.retrieve();
 				} catch (SQLException e) {
 					System.out.println(e);
-					JOptionPane.showMessageDialog(frmPersonInformation, "Unable to retrieve data in database", "Error Message", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frmPersonInformation, "Unable to retrieve data in database",
+							"Error Message", JOptionPane.ERROR_MESSAGE);
 				}
 				tablePanel.refresh();
 			}
 		});
-		
+
 		toolBar.add(btnRefresh);
 		pnlForm.setPreferredSize(new Dimension(250, 10));
 		Border innerBorder = BorderFactory.createTitledBorder("Add Person");
@@ -179,7 +144,7 @@ public class App {
 		gbc_txtName.gridy = gridY++;
 		pnlForm.add(txtName, gbc_txtName);
 		txtName.setColumns(10);
-		//////////////////////next row /////////////
+		////////////////////// next row /////////////
 		JLabel lblContactNumber = new JLabel("Contact Number:");
 		GridBagConstraints gbc_lblContactNumber = new GridBagConstraints();
 		gbc_lblContactNumber.insets = new Insets(0, 0, 5, 5);
@@ -251,7 +216,7 @@ public class App {
 		gbc_list.gridx = 2;
 		gbc_list.gridy = gridY++;
 		pnlForm.add(list, gbc_list);
-		////////////////////next row///////////////////////////
+		//////////////////// next row///////////////////////////
 		JLabel lblNote = new JLabel("Note:");
 		GridBagConstraints gbc_lblNote = new GridBagConstraints();
 		gbc_lblNote.insets = new Insets(0, 0, 5, 5);
@@ -270,7 +235,7 @@ public class App {
 		gbc_txtNote.gridy = gridY++;
 		pnlForm.add(txtNote, gbc_txtNote);
 		txtNote.setColumns(10);
-		/////////////////////next row///////////////
+		///////////////////// next row///////////////
 		JButton btnOk = new JButton("OK");
 		JLabel lblEmployment = new JLabel("Employment:");
 		GridBagConstraints gbc_lblEmployment = new GridBagConstraints();
@@ -284,12 +249,12 @@ public class App {
 		cmbBox.setModel(new DefaultComboBoxModel(new String[] { "Employed", "self-Employed", "unEmployed" }));
 		cmbBox.setEditable(true);
 		GridBagConstraints gbc_cmbBox = new GridBagConstraints();
+		gbc_cmbBox.anchor = GridBagConstraints.WEST;
 		gbc_cmbBox.insets = new Insets(0, 0, 5, 0);
-		gbc_cmbBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cmbBox.gridx = 2;
 		gbc_cmbBox.gridy = gridY++;
 		pnlForm.add(cmbBox, gbc_cmbBox);
-		//////////////////next row///////////////////////////////
+		////////////////// next row///////////////////////////////
 		JLabel lblPHCitizen = new JLabel("PH Citizen:");
 		GridBagConstraints gbc_lblPHCitizen = new GridBagConstraints();
 		gbc_lblPHCitizen.anchor = GridBagConstraints.EAST;
@@ -305,7 +270,7 @@ public class App {
 		gbc_chckbxUsCitizen.gridx = 2;
 		gbc_chckbxUsCitizen.gridy = gridY++;
 		pnlForm.add(chckbxUsCitizen, gbc_chckbxUsCitizen);
-		//////////////////////next row//////////////////////
+		////////////////////// next row//////////////////////
 		JLabel lblTaxId = new JLabel("Tax ID:");
 		lblTaxId.setEnabled(false);
 		GridBagConstraints gbc_lblTaxId = new GridBagConstraints();
@@ -343,7 +308,7 @@ public class App {
 		gbc_rdbtnMale.gridx = 2;
 		gbc_rdbtnMale.gridy = gridY++;
 		pnlForm.add(rdbtnMale, gbc_rdbtnMale);
-		////////////////////next row////////////////
+		//////////////////// next row////////////////
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
 		rdbtnFemale.setActionCommand("Female");
 		GridBagConstraints gbc_rdbtnFemale = new GridBagConstraints();
@@ -354,7 +319,7 @@ public class App {
 		genderGroup.add(rdbtnMale);
 		genderGroup.add(rdbtnFemale);
 		pnlForm.add(rdbtnFemale, gbc_rdbtnFemale);
-		///////////////////next row//////////////////
+		/////////////////// next row//////////////////
 		GridBagConstraints gbc_btnOk = new GridBagConstraints();
 		gbc_btnOk.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnOk.insets = new Insets(0, 0, 0, 0);
@@ -363,7 +328,6 @@ public class App {
 		gbc_btnOk.gridx = 2;
 		gbc_btnOk.gridy = gridY;
 		pnlForm.add(btnOk, gbc_btnOk);
-		controller = new Controller();
 		btnOk.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				String name = txtName.getText();
@@ -376,23 +340,23 @@ public class App {
 				boolean isPH = chckbxUsCitizen.isSelected();
 				String taxId = txtTaxId.getText();
 				connect();
-				controller.addPerson(name, contactNumber,occupation, age, employment, gender, isPH, taxId,note);
+				controller.addPerson(name, contactNumber, occupation, age, employment, gender, isPH, taxId, note);
 				tablePanel.refresh();
 			}
 		});
-		
+
 		new PersonTableModel();
 		tablePanel.setData(controller.getPeople());
 		tablePanel.setPersonTableListener(new PersonTableListener() {
 			public void rowDeleted(int row) {
-			try {
+				try {
 					controller.removePerson(row);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
+
 		chckbxUsCitizen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean isTicked = chckbxUsCitizen.isSelected();
@@ -404,19 +368,20 @@ public class App {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
 		JMenuItem exportItem = new JMenuItem("Export Data...");
-		
+
 		exportItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (fileChooser.showOpenDialog(exportItem) == JFileChooser.APPROVE_OPTION) {
 					try {
 						controller.saveToFile(fileChooser.getSelectedFile());
 					} catch (IOException e) {
-						JOptionPane.showMessageDialog(new JButton(), "Could not save data to the file", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(new JButton(), "Could not save data to the file", "Error",
+								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
 		});
-		
+
 		JMenuItem importItem = new JMenuItem("Import Data...");
 		importItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
 		exportItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
@@ -427,32 +392,33 @@ public class App {
 						controller.loadFromFile(fileChooser.getSelectedFile());
 						tablePanel.refresh();
 					} catch (IOException e) {
-						JOptionPane.showMessageDialog(new JButton(), "Could not load the data from the file", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(new JButton(), "Could not load the data from the file", "Error",
+								JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
 		});
-		
+
 		JMenuItem exitFile = new JMenuItem("Exit");
 		exitFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int action =JOptionPane.showConfirmDialog(new JButton(), "Do you really want to exit this application", "Confirm Exit",
-						JOptionPane.OK_CANCEL_OPTION);
+				int action = JOptionPane.showConfirmDialog(new JButton(), "Do you really want to exit this application",
+						"Confirm Exit", JOptionPane.OK_CANCEL_OPTION);
 				if (action == JOptionPane.OK_OPTION) {
 					WindowListener[] windowListeners = frmPersonInformation.getWindowListeners();
-					for (WindowListener listener: windowListeners) {
-						listener.windowClosing(new WindowEvent(frmPersonInformation,0));
+					for (WindowListener listener : windowListeners) {
+						listener.windowClosing(new WindowEvent(frmPersonInformation, 0));
 					}
 				}
 			}
 		});
-		
+
 		fileMenu.add(exportItem);
 		fileMenu.add(importItem);
 		fileMenu.addSeparator();
 		fileMenu.add(exitFile);
 		menuBar.add(fileMenu);
-		
+
 		JMenu windowMenu = new JMenu("Window");
 		JMenu showItem = new JMenu("Show");
 		JCheckBoxMenuItem showItemForm = new JCheckBoxMenuItem("PersonForm");
@@ -468,18 +434,19 @@ public class App {
 			public void actionPerformed(ActionEvent ev) {
 				JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) ev.getSource();
 				if (menuItem.isSelected()) {
-					splitPane.setDividerLocation((int)pnlForm.getMinimumSize().getWidth());
+					splitPane.setDividerLocation((int) pnlForm.getMinimumSize().getWidth());
 				}
 				pnlForm.setVisible(menuItem.isSelected());
 			}
 		});
 	}
-	
+
 	public void connect() {
 		try {
 			controller.connect();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(frmPersonInformation, "Unable to connect to database", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frmPersonInformation, "Unable to connect to database", "Error Message",
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

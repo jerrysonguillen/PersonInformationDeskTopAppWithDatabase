@@ -1,14 +1,21 @@
-Person information java application
+							Title:Person information java application
 
-This project is Person Information desktop application made in java-SE in eclipse IDE with database(MySQL)
+//this is my simple program for portfolio purposes
 
-//Purpose of the project is to show my implementation of some component in swing, using MVC design pattern then save the collected data in database and the use of serialization to save the collected data in your machine by exporting it and back to the program by importing the file
+-----------------------------------------------About--------------------------------------------------------------------
+This project will have many user with unique email address and every user can have their own set of information/contacts of the person list that they save in database they can also save they person list to they machine and put back again by the use of IO in java
 
+-----------------------------------------------Technologies-------------------------------------------------------------
+* Java 5 SE
+* Swing framework
+* Eclipse IDE
+* Mysql
+* MVC design pattern
+* GitHub
 
+-----------------------------------------------How to use--------------------------------------------------------------
 
-how to use
-
--clone this repository 
+-clone/pull/download this repository 
 
 -open your xampp start the apache and mysql (for xampp instruction.) 
 
@@ -16,24 +23,30 @@ how to use
 
 -open the LogInForm.java then run (PersonInformationDeskTopAppWithDatabase>src>gui>LogInForm.java)
 
--create a user account by going to registerform 
+-create a user account by going to register form 
 
 -then log-in
 
 -you can now have a own set of person information
 
 
----------------------------------------------------*functionality*---------------------------------------------------------------------
+-----------------------------------------------*functionality*---------------------------------------------------------------------
 
-note:
+-Have a Log-in form
 
--user can have own set of person information
+-Have a Registration form
 
--every user must have a unique email address
+-User can have own set of person information/contact
 
--can insert/view/update/delete row
+-Every user must have a unique email address
 
+-BREAD(Brows, Retrieve, Edit,Add, Delete) is implemented
 
+-Username and password must be 8-30 character
+
+-It has a local server(Mysql database)
+
+-----------------------------------------------User Interface-----------------------------------------------
 Add Person panel (left side) 
 
 fill up the fields in add person panel and click ok button and save it in table(right side)

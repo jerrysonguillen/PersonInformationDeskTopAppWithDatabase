@@ -1,24 +1,10 @@
 package gui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.sql.SQLException;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import controller.Controller;
 import java.awt.event.KeyAdapter;
@@ -31,9 +17,6 @@ public class LogInForm {
 	private JPasswordField txtPassword;
 	Controller controller = new Controller();
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,16 +30,10 @@ public class LogInForm {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public LogInForm() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmLogin = new JFrame();
 		frmLogin.setTitle("Log-in");
@@ -114,7 +91,6 @@ public class LogInForm {
 		
 		txtPassword = new JPasswordField();
 		txtPassword.addKeyListener(new KeyAdapter() {
-			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					String username = txtUsername.getText();
@@ -126,7 +102,6 @@ public class LogInForm {
 							App.main(null);
 						}
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -153,7 +128,6 @@ public class LogInForm {
 						App.main(null);
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -196,7 +170,6 @@ public class LogInForm {
 		try {
 			controller.connect();
 		} catch (Exception e) {
-			//e.printStackTrace();
 			JOptionPane.showMessageDialog(frmLogin, "Unable to connect to database", "Error Message", JOptionPane.ERROR_MESSAGE);
 		}
 	}

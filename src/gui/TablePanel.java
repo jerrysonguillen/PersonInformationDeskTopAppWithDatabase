@@ -1,16 +1,10 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.List;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import model.Person;
 
@@ -48,7 +42,6 @@ public class TablePanel extends javax.swing.JPanel {
 					tableModel.fireTableDataChanged();
 				}
 			}
-			
 		});
 	}
 	

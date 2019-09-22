@@ -1,27 +1,9 @@
 package gui;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 import controller.Controller;
@@ -71,7 +53,6 @@ public class Register {
 			}
 		});
 		
-		
 		JLabel lblFirstname = new JLabel("First Name:");
 		lblFirstname.setForeground(UIManager.getColor("Button.darkShadow"));
 		lblFirstname.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -109,7 +90,6 @@ public class Register {
 		frmRegister.getContentPane().add(lblUsername);
 		
 		JTextPane txtFirstname = new JTextPane();
-		
 		
 		txtFirstname.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 153, 255)));
 		txtFirstname.setBounds(456, 88, 353, 20);
@@ -241,7 +221,6 @@ public class Register {
 					st.deleteCharAt(txtFirstname.getText().length());
 					String res = new String(st);
 					txtFirstname.setText(res);
-					
 				}
 			}
 		});

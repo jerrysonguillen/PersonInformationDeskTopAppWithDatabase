@@ -51,6 +51,43 @@ public class Controller {
 	}
 	
 	public void addPerson(String name,String contactNumber,String occupation,int age,String employment,String gender,boolean isUs,String taxId,String note) {
+		AgeCategory ageCategory = setAgeCategory(age);
+		EmploymentCategory empCat = setEmploymentCategory(employment);
+		Gender genderCat = setGender(gender);
+		int id = generateId();
+		Person person = new Person(id,name,contactNumber, occupation, ageCategory, empCat, taxId, isUs, genderCat,db.getUser().getId(),note);
+		db.addPerson(person);
+	}
+	
+	private Gender setGender(String gender) {
+		Gender genderCat = Gender.male;
+		switch (gender) {
+		case "Male":
+			genderCat = Gender.male;
+			break;
+		case "Female":
+			genderCat = Gender.female;
+		default:
+			break;
+		}
+		return genderCat;
+	}
+
+	private EmploymentCategory setEmploymentCategory(String employment) {
+		EmploymentCategory empCat;
+		if (employment.equals("Employed")) {
+			empCat = EmploymentCategory.employed;
+		} else if (employment.equals("self-Employed")) {
+			empCat = EmploymentCategory.selfEmployed;
+		} else if (employment.equals("unEmployed")) {
+			empCat = EmploymentCategory.unemployed;
+		} else {
+			empCat = EmploymentCategory.other;
+		}
+		return empCat;
+	}
+
+	private AgeCategory setAgeCategory(int age) {
 		AgeCategory ageCategory = null;
 		switch (age) {
 		case 0:
@@ -64,33 +101,15 @@ public class Controller {
 		default:
 			break;
 		}
-		
-		EmploymentCategory empCat;
-		if (employment.equals("Employed")) {
-			empCat = EmploymentCategory.employed;
-		} else if (employment.equals("self-Employed")) {
-			empCat = EmploymentCategory.selfEmployed;
-		} else if (employment.equals("unEmployed")) {
-			empCat = EmploymentCategory.unemployed;
-		} else {
-			empCat = EmploymentCategory.other;
-		}
-		Gender genderCat = null;
-		switch (gender) {
-		case "Male":
-			genderCat = Gender.male;
-			break;
-		case "Female":
-			genderCat = Gender.female;
-		default:
-			break;
-		}
-		
+		return ageCategory;
+	}
+
+	private int generateId() {
+		int id = 1;
 		ArrayList<Integer> personId = new ArrayList<Integer>();
 		for (Person person: db.getPeople()) {
 			personId.add(person.getId());
 		}
-		int id=1;
 		try {
 			id = db.getMaxId();
 		} catch (SQLException e) {
@@ -106,10 +125,9 @@ public class Controller {
 		}else {
 			id++;
 		}
-		Person person = new Person(id,name,contactNumber, occupation, ageCategory, empCat, taxId, isUs, genderCat,db.getUser().getId(),note);
-		db.addPerson(person);
+		return id;
 	}
-	
+
 	public void saveToFile(File file) throws IOException {
 		db.SaveToFile(file);
 	}
@@ -155,7 +173,4 @@ public class Controller {
 		}
 		return result;
 	}
-
-	
-	
 }
